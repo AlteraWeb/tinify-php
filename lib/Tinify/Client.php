@@ -81,6 +81,7 @@ class Client {
 
             $url = strtolower(substr($url, 0, 6)) == "https:" ? $url : self::API_ENDPOINT . $url;
             curl_setopt($request, CURLOPT_URL, $url);
+            curl_setopt($request, CURLOPT_TIMEOUT, 0); // Unlimit timeout for big files ~ 1 mb
             curl_setopt($request, CURLOPT_CUSTOMREQUEST, strtoupper($method));
 
             if (count($header) > 0) {
